@@ -1,4 +1,4 @@
-from src.recommender import Song, UserProfile, Recommender
+from src.recommender import Song, UserProfile, Recommender, load_songs
 
 def make_small_recommender() -> Recommender:
     songs = [
@@ -59,3 +59,22 @@ def test_explain_recommendation_returns_non_empty_string():
     explanation = rec.explain_recommendation(user, song)
     assert isinstance(explanation, str)
     assert explanation.strip() != ""
+
+
+def test_load_songs_converts_numeric_fields(tmp_path):
+    csv_path = tmp_path / "songs.csv"
+    csv_path.write_text(
+        "id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness\n"
+        "1,Test Song,Test Artist,pop,happy,0.82,118,0.84,0.79,0.18\n",
+        encoding="utf-8",
+    )
+
+    songs = load_songs(str(csv_path))
+
+    assert len(songs) == 1
+    assert songs[0]["id"] == 1
+    assert isinstance(songs[0]["id"], int)
+    assert songs[0]["energy"] == 0.82
+    assert isinstance(songs[0]["energy"], float)
+    assert songs[0]["tempo_bpm"] == 118.0
+    assert isinstance(songs[0]["tempo_bpm"], float)
