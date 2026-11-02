@@ -156,6 +156,107 @@ Top recommendations:
    - energy similarity (+0.93)
 ```
 
+```
+% python3 src/main.py
+Loaded songs: 18
+
+Top recommendations for High-Energy Pop:
+
+1. Sunrise City
+   Final score: 3.92
+   Reasons:
+   - genre match (+2.0)
+   - mood match (+1.0)
+   - energy similarity (+0.92)
+
+2. Gym Hero
+   Final score: 2.97
+   Reasons:
+   - genre match (+2.0)
+   - energy similarity (+0.97)
+
+3. Rooftop Lights
+   Final score: 1.86
+   Reasons:
+   - mood match (+1.0)
+   - energy similarity (+0.86)
+
+4. Storm Runner
+   Final score: 0.99
+   Reasons:
+   - energy similarity (+0.99)
+
+5. Neon Carnival
+   Final score: 0.97
+   Reasons:
+   - energy similarity (+0.97)
+
+
+Top recommendations for Chill Lofi:
+
+1. Midnight Coding
+   Final score: 3.98
+   Reasons:
+   - genre match (+2.0)
+   - mood match (+1.0)
+   - energy similarity (+0.98)
+
+2. Library Rain
+   Final score: 3.95
+   Reasons:
+   - genre match (+2.0)
+   - mood match (+1.0)
+   - energy similarity (+0.95)
+
+3. Focus Flow
+   Final score: 3.00
+   Reasons:
+   - genre match (+2.0)
+   - energy similarity (+1.00)
+
+4. Spacewalk Thoughts
+   Final score: 1.88
+   Reasons:
+   - mood match (+1.0)
+   - energy similarity (+0.88)
+
+5. Coffee Shop Stories
+   Final score: 0.97
+   Reasons:
+   - energy similarity (+0.97)
+
+
+Top recommendations for Deep Intense Rock:
+
+1. Storm Runner
+   Final score: 3.99
+   Reasons:
+   - genre match (+2.0)
+   - mood match (+1.0)
+   - energy similarity (+0.99)
+
+2. Gym Hero
+   Final score: 1.97
+   Reasons:
+   - mood match (+1.0)
+   - energy similarity (+0.97)
+
+3. Neon Carnival
+   Final score: 0.97
+   Reasons:
+   - energy similarity (+0.97)
+
+4. Iron Cathedral
+   Final score: 0.94
+   Reasons:
+   - energy similarity (+0.94)
+
+5. Sunrise City
+   Final score: 0.92
+   Reasons:
+   - energy similarity (+0.92)
+```
+
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
 
 ---

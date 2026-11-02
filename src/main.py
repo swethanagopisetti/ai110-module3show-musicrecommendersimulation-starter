@@ -16,23 +16,27 @@ def main() -> None:
     songs = load_songs("data/songs.csv")
     print(f"Loaded songs: {len(songs)}")
 
-    # Starter example profile
-    user_prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
+    user_profiles = {
+        "High-Energy Pop": {"genre": "pop", "mood": "happy", "energy": 0.9},
+        "Chill Lofi": {"genre": "lofi", "mood": "chill", "energy": 0.4},
+        "Deep Intense Rock": {"genre": "rock", "mood": "intense", "energy": 0.9},
+    }
 
-    recommendations = recommend_songs(user_prefs, songs, k=5)
+    for profile_name, user_prefs in user_profiles.items():
+        recommendations = recommend_songs(user_prefs, songs, k=5)
 
-    print("\nTop recommendations:\n")
-    if not recommendations:
-        print("No recommendations found.")
-        return
+        print(f"\nTop recommendations for {profile_name}:\n")
+        if not recommendations:
+            print("No recommendations found.")
+            continue
 
-    for rank, (song, score, explanation) in enumerate(recommendations, start=1):
-        print(f"{rank}. {song['title']}")
-        print(f"   Final score: {score:.2f}")
-        print("   Reasons:")
-        for reason in explanation.split(", "):
-            print(f"   - {reason}")
-        print()
+        for rank, (song, score, explanation) in enumerate(recommendations, start=1):
+            print(f"{rank}. {song['title']}")
+            print(f"   Final score: {score:.2f}")
+            print("   Reasons:")
+            for reason in explanation.split(", "):
+                print(f"   - {reason}")
+            print()
 
 
 if __name__ == "__main__":
