@@ -287,11 +287,15 @@ You will go deeper on this in your model card.
 
 ## Reflection
 
-Read and complete `model_card.md`:
+My biggest learning moment was seeing how the scoring weights shape the results.
+Gym Hero ranked first for High-Energy Pop even though its mood is intense,
+because the recommender scores genre and energy but ignores mood. I was
+surprised that such a simple score can still feel personal when the top songs
+match a listener's genre and energy preferences.
 
-[**Model Card**](model_card.md)
-
-Write 1 to 2 paragraphs here about what you learned:
-
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
+AI tools helped me draft profile ideas and explain the scoring, but I checked
+the code and ran the profiles to confirm what features were actually used and
+which songs ranked highest. That double-check caught the difference between
+the intended mood preference and the current scorer. If I extended this
+project, I would add mood to the score and test ways to make the results more
+diverse.
