@@ -1,4 +1,4 @@
-from src.recommender import Song, UserProfile, Recommender, load_songs, score_song
+from src.recommender import Song, UserProfile, Recommender, load_songs, recommend_songs, score_song
 
 
 def test_score_song_returns_score_and_reasons_for_matches():
@@ -23,6 +23,51 @@ def test_score_song_scores_energy_without_genre_or_mood_matches():
 
     assert score == 1.0
     assert reasons == ["energy similarity (+1.00)"]
+
+
+def test_recommend_songs_ranks_catalog_and_includes_explanations():
+    preferred_song = {
+        "title": "Preferred",
+        "genre": "pop",
+        "mood": "happy",
+        "energy": 0.8,
+    }
+    other_song = {
+        "title": "Other",
+        "genre": "rock",
+        "mood": "sad",
+        "energy": 0.4,
+    }
+
+    recommendations = recommend_songs(
+        {"genre": "pop", "mood": "happy", "energy": 0.8},
+        [other_song, preferred_song],
+        k=1,
+    )
+
+    assert recommendations == [
+        (
+            preferred_song,
+            4.0,
+            "genre match (+2.0), mood match (+1.0), energy similarity (+1.00)",
+        )
+    ]
+
+
+def test_recommend_songs_preserves_catalog_order_for_ties():
+    songs = [
+        {"title": "First", "genre": "rock", "mood": "sad", "energy": 0.8},
+        {"title": "Second", "genre": "rock", "mood": "sad", "energy": 0.8},
+    ]
+
+    recommendations = recommend_songs(
+        {"genre": "pop", "mood": "happy", "energy": 0.8},
+        songs,
+        k=2,
+    )
+
+    assert [song["title"] for song, _, _ in recommendations] == ["First", "Second"]
+
 
 def make_small_recommender() -> Recommender:
     songs = [
