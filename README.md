@@ -120,6 +120,42 @@ Paste a sample of your recommender's output here as a text block so a reader can
 #   3. ...
 ```
 
+```
+% python3 src/main.py
+Loaded songs: 18
+
+Top recommendations:
+
+1. Sunrise City
+   Final score: 3.98
+   Reasons:
+   - genre match (+2.0)
+   - mood match (+1.0)
+   - energy similarity (+0.98)
+
+2. Gym Hero
+   Final score: 2.87
+   Reasons:
+   - genre match (+2.0)
+   - energy similarity (+0.87)
+
+3. Rooftop Lights
+   Final score: 1.96
+   Reasons:
+   - mood match (+1.0)
+   - energy similarity (+0.96)
+
+4. Night Drive Loop
+   Final score: 0.95
+   Reasons:
+   - energy similarity (+0.95)
+
+5. Neon Carnival
+   Final score: 0.93
+   Reasons:
+   - energy similarity (+0.93)
+```
+
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
 
 ---
