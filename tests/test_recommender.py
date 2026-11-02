@@ -1,4 +1,28 @@
-from src.recommender import Song, UserProfile, Recommender, load_songs
+from src.recommender import Song, UserProfile, Recommender, load_songs, score_song
+
+
+def test_score_song_returns_score_and_reasons_for_matches():
+    score, reasons = score_song(
+        {"genre": "pop", "mood": "happy", "energy": 0.8},
+        {"genre": "pop", "mood": "happy", "energy": 0.6},
+    )
+
+    assert score == 3.8
+    assert reasons == [
+        "genre match (+2.0)",
+        "mood match (+1.0)",
+        "energy similarity (+0.80)",
+    ]
+
+
+def test_score_song_scores_energy_without_genre_or_mood_matches():
+    score, reasons = score_song(
+        {"genre": "pop", "mood": "happy", "energy": 0.8},
+        {"genre": "rock", "mood": "sad", "energy": 0.8},
+    )
+
+    assert score == 1.0
+    assert reasons == ["energy similarity (+1.00)"]
 
 def make_small_recommender() -> Recommender:
     songs = [
