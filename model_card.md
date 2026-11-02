@@ -70,20 +70,34 @@ Prompts:
 - Cases where the system overfits to one preference  
 - Ways the scoring might unintentionally favor some users  
 
+In my experiments, the High-Energy Pop profile ranked Gym Hero first, even though its mood is intense rather than happy. Its pop genre match and energy close to the 0.9 target earn it a high score; mood does not affect ranking because mood scoring is disabled. The 2-point genre match can outweigh a closer energy fit, and exact genre matching treats related labels such as "pop" and "indie pop" as different. As a result, listeners whose preferences do not match the catalog's exact genre labels may get less relevant recommendations.
+
 ---
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
+I tested the top five recommendations for High-Energy Pop (pop, energy 0.9),
+Chill Lofi (lofi, energy 0.4), and Deep Intense Rock (rock, energy 0.9). I
+expected the preferred genre and energy level to influence the results, and
+they did. What surprised me was that Gym Hero, an intense pop song, ranked
+first for High-Energy Pop and second for Deep Intense Rock: its high energy
+suits both, and the system does not currently use mood to tell "happy" and
+"intense" apart.
 
-Prompts:  
-
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
-
-No need for numeric metrics unless you created some.
+- **High-Energy Pop vs. Chill Lofi:** High-Energy Pop puts Gym Hero and Sunrise
+  City at the top, while Chill Lofi puts Focus Flow, Midnight Coding, and
+  Library Rain first. That makes sense because the first profile rewards pop
+  and energy near 0.9, while the second rewards lofi and energy near 0.4.
+- **High-Energy Pop vs. Deep Intense Rock:** Both profiles prefer high energy,
+  so energetic songs such as Gym Hero and Storm Runner appear near the top for
+  both. Gym Hero leads for Pop because it matches pop; Storm Runner leads for
+  Rock because it matches rock. The happy/intense mood difference does not
+  change the ranking because mood is not scored.
+- **Chill Lofi vs. Deep Intense Rock:** Chill Lofi favors lower-energy lofi
+  songs, while Deep Intense Rock favors high-energy rock, led by Storm Runner.
+  Gym Hero still appears second for Rock because its energy is close to the
+  target, even though its genre is pop. This shows how the genre bonus and
+  energy score combine in the results.
 
 ---
 
